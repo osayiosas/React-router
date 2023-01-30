@@ -4,12 +4,22 @@ import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
 import { Navbar } from "./Navbar";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query"
 
 
-function App() {
+function App()
+{
+  const client = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      }
+    }
+  });
 
   return (
     <div className="App">
+      <QueryClientProvider client={client}>
         <Router>
           <Navbar />
 
@@ -20,6 +30,7 @@ function App() {
             <Route path="*" element={<h1>YOU ARE OF THE PAGE</h1>} />
           </Routes>
         </Router>
+      </QueryClientProvider>
     </div>
   );
 }
