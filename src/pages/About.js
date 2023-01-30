@@ -1,7 +1,17 @@
+import { ChangeProfile } from "../components/ChangeProfile";
 
+import { useContext } from "react";
+import { AppContext } from "../App";
 
 export const About = () => {
-  return <h1>THIS THE ABOUT PAGE</h1>
-}
+  const { username } = useContext(AppContext);
 
-export default About
+  return (
+    <div>
+      THIS THE ABOUT PAGE: {username}
+      <ChangeProfile />
+    </div>
+  );
+};
+
+export default About;
